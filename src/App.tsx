@@ -1,25 +1,26 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { ThemeProvider } from "styled-components";
+import { guidelineColors } from "./theme";
+import AppRouter from "./App.router";
+import FooterComponent from "./components/footer/footer.component";
+import { Helmet } from "react-helmet";
+
+const getTheme = () => guidelineColors;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={getTheme()}>
+    <Helmet>
+      <meta charSet="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Dog Search</title>
+    </Helmet>
+    <AppRouter />
+    <FooterComponent />
+  </ThemeProvider>
   );
 }
 
